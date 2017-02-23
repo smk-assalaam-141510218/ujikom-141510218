@@ -3,6 +3,10 @@
 @section('content')
 <div class="container">
 	<div class="panel panel-info">
+		<form action="{{('jabatan')}} /? kode_jabatan = kode_jabatan">
+		<input type="text" name="kode_jabatan" placeholder="Cari Berdasarkan Petugas">
+		<input type="submit" class="btn btn-info" value="Cari">
+	</form>
 		<div class="panel-heading"><b><h2><center>Jabatan</center></h2></b></div>
 		<div class="panel-body">
 			<table class="table table-striped table-bordered table-hover">

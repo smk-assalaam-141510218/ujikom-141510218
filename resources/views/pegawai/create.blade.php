@@ -2,9 +2,8 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-primary">
-			<div class="panel-heading">Registrasi Pegawai</div>
+		<div class="col-md-8 col-md-offset-2">	
+			<div class="panel-heading"><h2><b><center>Tambah Data Pegawai</center></b></h2></div>
 				<div class="panel-body">
 					<form action="{{route('pegawai.store')}}" method="post" enctype= "multipart/form-data">
 					{{csrf_field()}}
@@ -19,9 +18,10 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Jabatan</label>
                         <div class="col-md-8 form-group">
-                            <select name="jabatan_id" class="form-control"   required>
+                            <select name="jabatan_id" class="form-control" required>
+                            <option>Pilih Data Jabatan</option>
                                 @foreach($jabatan as $data)
-                                <option placeholder="Pilih Data Jabatan" value="{{$data->id}}">{{$data->nama_jabatan}}</option>
+                                <option value="{{$data->id}}">{{$data->nama_jabatan}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -31,6 +31,7 @@
                         <label class="col-md-4 control-label">Golongan</label>
                         <div class="col-md-8 form-group">
                             <select name="golongan_id" class="form-control" required>
+                            <option>Pilih Data Golongan</option>
                                 @foreach($golongan as $data)
                                 <option value="{{$data->id}}">{{$data->nama_golongan}}</option>
                                 @endforeach
@@ -108,8 +109,8 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">
                                 Register
                             </button>

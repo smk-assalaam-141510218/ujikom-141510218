@@ -2,9 +2,8 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
-			<div class="panel panel-default">
-			<div class="panel-heading">Registrasi Pegawai</div>
+		<div class="col-md-8 col-md-offset-2">    
+			<div class="panel-heading"><h2><b><center>Ubah Data</center></b></h2></div>
 				<div class="panel-body">
 					<form action="{{route('pegawai.update', $pegawai->id)}}" method="post" enctype= "multipart/form-data">
 					{{csrf_field()}}
@@ -20,6 +19,7 @@
                         <label class="col-md-4 control-label">Pilih Jabatan</label>
                         <div class="col-md-8 form-group">
                             <select name="jabatan_id" class="form-control" required>
+                            <option>Pilih Data Jabatan</option>
                                 @foreach($jabatan as $data)
                                 <option value="{{$data->id}}">{{$data->nama_jabatan}}</option>
                                 @endforeach
@@ -31,6 +31,7 @@
                         <label class="col-md-4 control-label">Pilih Golongan</label>
                         <div class="col-md-8 form-group">
                             <select name="golongan_id" class="form-control" required>
+                            <option>Pilih Data Golongan</option>
                                 @foreach($golongan as $data)
                                 <option value="{{$data->id}}">{{$data->nama_golongan}}</option>
                                 @endforeach
@@ -45,14 +46,6 @@
                         </div>
                     </div>
 
-				</div>
-			</div>
-		</div>
-
-		<div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">Registrasi User</div>
-                <div class="panel-body">
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label">Name</label>
 
@@ -121,9 +114,13 @@
 	</div>
     <div class="form-group">
         <div>
-            <button type="submit" class="btn btn-primary form-control">
-                Register
-            </button>
+            <div class="form-group">
+                <div class="col-md-6 col-md-offset-4">
+                    <button type="submit" class="btn btn-success">
+                        Simpan
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -29,6 +29,6 @@ class User extends Authenticatable
 
     public function Pegawai()
     {
-        $this->hasOne('App\Pegawai','user_id');
+        return $this->hasOne('App\Pegawai','user_id');
     }
 }

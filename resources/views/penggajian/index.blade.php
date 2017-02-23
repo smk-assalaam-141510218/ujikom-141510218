@@ -3,6 +3,10 @@
 @section('content')
 <div class="container">
 	<div class="panel panel-info">
+	<form action="{{url('penggajian')}} /? petugas_penerima = petugas_penerima">
+		<input type="text" name="petugas_penerima" placeholder="Cari Berdasarkan Petugas">
+		<input type="submit" class="btn btn-info" value="Cari">
+	</form>
 		<div class="panel-heading"><b><h2><center>Penggajian</center></h2></b></div>
 		<div class="panel-body">
 			<table class="table table-striped table-bordered table-hover">
@@ -28,11 +32,13 @@
 					@foreach($penggajian as $data)
 					<tr>
 						<td> {{$no++}} </td>
-						<td> {{$data->TunjanganPegawai->tunjangan_pegawai_id}} </td>
+						<td> {{$data->Tunjangan->kode_tunjangan}} </td>
 						<td> {{$data->jumlah_jam_lembur}} </td>
 						<td> {{$data->jumlah_uang_lembur}} </td>
+						<td> {{$data->gaji_pokok}} </td>
 						<td> {{$data->total_gaji}} </td>
 						<td> {{$data->tanggal_pengambilan}} </td>
+						<td> {{$data->status_pengambilan}} </td>
 						<td> {{$data->petugas_penerima}} </td>
 						<td>
 							<a class="btn btn-info btn-sm" href="{{route('penggajian.edit', $data->id)}}">Ubah</a>

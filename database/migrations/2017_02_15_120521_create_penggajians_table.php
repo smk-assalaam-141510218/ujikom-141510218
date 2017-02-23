@@ -20,8 +20,10 @@ class CreatePenggajiansTable extends Migration
                 ->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->integer('jumlah_jam_lembur');
             $table->integer('jumlah_uang_lembur');
+            $table->integer('gaji_pokok');
             $table->integer('total_gaji');
             $table->date('tanggal_pengambilan');
+            $table->string('status_pengambilan');
             $table->string('petugas_penerima');
             $table->timestamps();
         });

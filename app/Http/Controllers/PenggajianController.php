@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+/*use Illuminate\Http\Request;*/
+use App\Tunjangan;
 use App\TunjanganPegawai;
-use App\Lembur;
+use App\LemburPegawai;
 use App\Penggajian;
+use Request;
 
 
 class PenggajianController extends Controller
@@ -17,8 +19,13 @@ class PenggajianController extends Controller
      */
     public function index()
     {
-        //
-        $penggajian=Penggajian::with('TunjanganPegawai');
+
+        if(request()->has('petugas_penerima'))
+        {
+            $penggajian=Penggajian::where('petugas_penerima', request('petugas_penerima'))->paginate(2);
+        }
+
+        $penggajian=Penggajian::with('Tunjangan')->get();
         return view('penggajian.index', compact('penggajian'));
     }
 
@@ -30,6 +37,8 @@ class PenggajianController extends Controller
     public function create()
     {
         //
+        $tun=Tunjangan::all();
+        return view('penggajian.create', compact('tun'));
     }
 
     /**
@@ -41,6 +50,9 @@ class PenggajianController extends Controller
     public function store(Request $request)
     {
         //
+        $penggajian=Request::all();
+        Penggajian::create($penggajian);
+        return redirect('penggajian');
     }
 
     /**
@@ -63,6 +75,9 @@ class PenggajianController extends Controller
     public function edit($id)
     {
         //
+        $penggajian=Penggajian::find($id);
+        $tun=Tunjangan::all();
+        return view('penggajian.edit', compact('penggajian','tun'));
     }
 
     /**
@@ -75,6 +90,10 @@ class PenggajianController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $penggajian=Request::all();
+        $penggajianUpdate=Penggajian::find($id);
+        $penggajianUpdate->update($penggajian);
+        return redirect('penggajian');
     }
 
     /**
@@ -86,5 +105,7 @@ class PenggajianController extends Controller
     public function destroy($id)
     {
         //
+        $penggajian=Penggajian::find($id)->delete();
+        return redirect('penggajian');
     }
 }

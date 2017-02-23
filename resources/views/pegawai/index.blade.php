@@ -14,7 +14,7 @@
 					<th>Nama Jabatan</th>
 					<th>Nama Golongan</th>
 					<th>Photo</th>
-					<th colspan="1">Action</th>
+					<th colspan="3">Action</th>
 				</tr>
 				</thead>
 
@@ -30,6 +30,9 @@
 						<td> {{$data->Jabatan->nama_jabatan}} </td>
 						<td> {{$data->Golongan->nama_golongan}} </td>
 						<td><img src="gambar/{{$data->photo}}" height="90px" width="100px"></td>
+						<td>
+						<a class="btn btn-info btn-sm" href="{{route('pegawai.edit', $data->id)}}">Ubah</a>
+						</td>
 						<td>
 							<form method="POST" action="{{route('pegawai.destroy', $data->id)}}">
 								{{csrf_field()}}

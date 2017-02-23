@@ -19,6 +19,11 @@ class JabatanController extends Controller
     
     public function index()
     {
+        if(request()->has('kode_jabatan'))
+        {
+            $jabatan=Jabatan::where('kode_jabatan', request('kode_jabatan'))->paginate(2);
+        }
+
         //
         $jabatan=Jabatan::paginate('5');
         return view('jabatan.index', compact('jabatan'));

@@ -100,7 +100,7 @@ class PegawaiController extends Controller
     {
         //
         $pegawai=Pegawai::find($id);
-        $user=User::all();
+        $user=User::find($id);
         $jabatan=Jabatan::all();
         $golongan=Golongan::all();
         return view('pegawai.edit', compact('pegawai','user','jabatan','golongan'));
@@ -115,7 +115,7 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*
+        
         $file=Input::file('photo');
         $destination=public_path().'/gambar ';
         $filename=$file->getClientOriginalName();
@@ -136,7 +136,7 @@ class PegawaiController extends Controller
             $pegawai->photo=$filename;
             $pegawai->update();
         }
-        return redirect('pegawai');*/
+        return redirect('pegawai');
     }
 
     /**
@@ -148,7 +148,7 @@ class PegawaiController extends Controller
     public function destroy($id)
     {
         //
-        $pegawai = User::find($id)->delete();
+        $pegawai = Pegawai::find($id)->delete();
         return redirect('pegawai');
     }
 }
